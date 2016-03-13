@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>XamarinActivator</id>
+    <version>1.0.0</version>
+    <authors>.NET Development Addict</authors>
+    <owners>mattleibow</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A small tool to help CI system activate and deactivate Xamarin licenses.</description>
+    <copyright>Copyright (c) .NET Development Addict 2016</copyright>
+    <tags>Xamarin,Activation,License</tags>
+  </metadata>
+  <files>
+    <file src="output/merged/XamarinActivator.exe" target="tools/XamarinActivator.exe" />
+  </files>
+</package>
