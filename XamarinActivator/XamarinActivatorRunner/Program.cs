@@ -125,11 +125,11 @@ namespace XamarinActivatorRunner
 
             return 0;
         }
-
-        private enum Actions
-        {
-            Activate,
-            Deactivate
-        }
+    }
+    
+    public enum Actions
+    {
+        Activate,
+        Deactivate
     }
 }

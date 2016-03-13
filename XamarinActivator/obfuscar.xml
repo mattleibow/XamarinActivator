@@ -13,7 +13,7 @@
   <Var name="KeyFile" value="XamarinActivator/XamarinActivator.snk" />
   
   <Module file="$(InPath)/XamarinActivator.exe">
-    <SkipField type="XamarinActivatorRunner.MainClass.Actions" attrib="" rx=".*" />
+    <SkipField type="XamarinActivatorRunner.Actions" attrib="" rx=".*" />
     <SkipField type="XamarinActivator.XamarinProducts" attrib="" rx=".*" />
   </Module>
   
