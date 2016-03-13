@@ -14,21 +14,40 @@ namespace XamarinActivator
 {
     public class XamarinActivationClient
     {
-        private readonly static bool IsWindows = Path.DirectorySeparatorChar == '\\';
-        private const string TrialLevel = "Trial";
+        private readonly static bool IsWindows;
+        private readonly static string TrialLevel = "Trial";
 
-        private const string AuthUri = "https://auth.xamarin.com/api/v1/auth";
-        private const string ActivateUri = "https://activation.xamarin.com/api/studio.ashx";
-        private const string DeactivateUri = "https://activation.xamarin.com/api/deactivate.ashx";
+        private readonly static string AuthUri = "https://auth.xamarin.com/api/v1/auth";
+        private readonly static string ActivateUri = "https://activation.xamarin.com/api/studio.ashx";
+        private readonly static string DeactivateUri = "https://activation.xamarin.com/api/deactivate.ashx";
 
-        private const string MTouchToolPath = "/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/bin/mtouch";
-        private const string MAndroidToolPath = "/Library/Frameworks/Xamarin.Android.framework/Versions/Current/bin/mandroid";
-        private const string MMacToolPath = "/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/bin/mmp";
+        private readonly static string MTouchToolPath;
+        private readonly static string MAndroidToolPath;
+        private readonly static string MMacToolPath;
 
-        private const string DatafileArg = "--datafile";
+        private readonly static string DatafileArg = "--datafile";
 
         private readonly string userAgent;
         private readonly string apiKey;
+
+        static XamarinActivationClient()
+        {
+            IsWindows = Path.DirectorySeparatorChar == '\\';
+
+            if (IsWindows)
+            {
+                var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+                MTouchToolPath = Path.Combine(programFiles, "MSBuild\\Xamarin\\iOS\\mtouch.exe");
+                MAndroidToolPath = Path.Combine(programFiles, "MSBuild\\Xamarin\\Android\\mandroid.exe");
+                MMacToolPath = string.Empty;
+            }
+            else
+            {
+                MTouchToolPath = "/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/bin/mtouch";
+                MAndroidToolPath = "/Library/Frameworks/Xamarin.Android.framework/Versions/Current/bin/mandroid";
+                MMacToolPath = "/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/bin/mmp";
+            }
+        }
 
         public XamarinActivationClient(string userAgent, string apiKey)
         {
@@ -50,6 +69,11 @@ namespace XamarinActivator
 
             foreach (var product in products)
             {
+                if (!ProductAvailable(product))
+                {
+                    continue;
+                }
+
                 var machineData = await GetMachineDataAsync(product);
 
                 var result = await ActivateAsync(session.Token, session.User.Guid, product, machineData);
@@ -78,6 +102,11 @@ namespace XamarinActivator
 
             foreach (var product in products)
             {
+                if (!ProductAvailable(product))
+                {
+                    continue;
+                }
+
                 var machineData = await GetMachineDataAsync(product);
 
                 var result = await DeactivateAsync(session.Token, session.User.Guid, product, machineData);
@@ -90,6 +119,16 @@ namespace XamarinActivator
             }
 
             await LogoutAsync(session.Token);
+        }
+
+        private bool ProductAvailable(XamarinProducts product)
+        {
+            if (IsWindows && product == XamarinProducts.Mac)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private HttpClient CreateHttpClient()

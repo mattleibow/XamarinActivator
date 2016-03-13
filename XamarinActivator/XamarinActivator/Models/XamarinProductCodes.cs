@@ -2,8 +2,8 @@ namespace XamarinActivator.Models
 {
     internal static class XamarinProductCodes
     {
-        public const string Android = "MA";
-        public const string iOS = "MT";
-        public const string Mac = "MM";
+        public readonly static string Android = "MA";
+        public readonly static string iOS = "MT";
+        public readonly static string Mac = "MM";
     }
 }
