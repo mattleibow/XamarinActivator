@@ -1,9 +1,9 @@
 namespace XamarinActivator
 {
-	public enum XamarinProducts
-	{
-		Android,
-		iOS,
-		Mac
-	}
+    public enum XamarinProducts
+    {
+        Android,
+        iOS,
+        Mac
+    }
 }

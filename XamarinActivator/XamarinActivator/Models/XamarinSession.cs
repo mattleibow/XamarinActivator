@@ -2,18 +2,18 @@ using Newtonsoft.Json;
 
 namespace XamarinActivator.Models
 {
-	internal class XamarinSession
-	{
-		[JsonProperty ("error")]
-		public string Error;
+    internal class XamarinSession
+    {
+        [JsonProperty("error")]
+        public string Error;
 
-		[JsonProperty ("success")]
-		public bool Success;
+        [JsonProperty("success")]
+        public bool Success;
 
-		[JsonProperty ("token")]
-		public string Token;
+        [JsonProperty("token")]
+        public string Token;
 
-		[JsonProperty ("user")]
-		public XamarinUser User;
-	}
+        [JsonProperty("user")]
+        public XamarinUser User;
+    }
 }

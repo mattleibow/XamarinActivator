@@ -2,27 +2,27 @@ using Newtonsoft.Json;
 
 namespace XamarinActivator.Models
 {
-	internal class XamarinActivationResult
-	{
-		[JsonProperty ("usedMachines")]
-		public int UsedMachines;
+    internal class XamarinActivationResult
+    {
+        [JsonProperty("usedMachines")]
+        public int UsedMachines;
 
-		[JsonProperty ("messageDetail")]
-		public string MessageDetail;
+        [JsonProperty("messageDetail")]
+        public string MessageDetail;
 
-		[JsonProperty ("message")]
-		public string Message;
+        [JsonProperty("message")]
+        public string Message;
 
-		[JsonProperty ("license")]
-		public string License;
+        [JsonProperty("license")]
+        public string License;
 
-		[JsonProperty ("level")]
-		public string Level;
+        [JsonProperty("level")]
+        public string Level;
 
-		[JsonProperty ("code")]
-		public XamarinResponseCode Code;
+        [JsonProperty("code")]
+        public XamarinResponseCode Code;
 
-		[JsonProperty ("allowedMachines")]
-		public int AllowedMachines;
-	}
+        [JsonProperty("allowedMachines")]
+        public int AllowedMachines;
+    }
 }
