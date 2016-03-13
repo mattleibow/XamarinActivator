@@ -4,7 +4,8 @@
   <Var name="InPath" value="output/merged" />
   <Var name="OutPath" value="output/obfuscated" />
   
-  <Var name="HideStrings" value="true" />
+  <Var name="HideStrings" value="false" />
+  <!--<Var name="HideStrings" value="true" />-->
   <Var name="KeepPublicApi" value="false" />
   <Var name="HidePrivateApi" value="true" />
   <Var name="RegenerateDebugInfo " value="true" />
