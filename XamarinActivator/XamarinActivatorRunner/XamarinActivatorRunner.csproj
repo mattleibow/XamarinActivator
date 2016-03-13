@@ -43,4 +43,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XamarinActivator\XamarinActivator.csproj">
+      <Project>{b4a45d3d-91c5-41c7-ae8e-242796d4cf5c}</Project>
+      <Name>XamarinActivator</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
