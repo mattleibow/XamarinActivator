@@ -1,4 +1,4 @@
-#tool nuget:?package=ILMerge
+#tool nuget:?package=ILRepack
 #tool nuget:?package=Obfuscar
 
 #addin nuget:?package=Cake.FileHelpers
@@ -55,9 +55,9 @@ Task("Merge")
         CreateDirectory("./output/merged");
     }
     
-    var tool = "./tools/ILMerge/tools/ILMerge.exe";
+    var tool = "./tools/ILRepack/tools/ILRepack.exe";
     var args = 
-        "/target:winexe /keyfile:XamarinActivator/XamarinActivator.snk " + 
+        "/keyfile:XamarinActivator/XamarinActivator.snk " + 
         "/out:output/merged/XamarinActivator.exe " + 
         "output/XamarinActivatorRunner.exe " + 
         "output/XamarinActivator.dll " + 
