@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Obfuscator>
 
-  <Var name="InPath" value=".\output\merged" />
-  <Var name="OutPath" value=".\output\obfuscated" />
+  <Var name="InPath" value="output/merged" />
+  <Var name="OutPath" value="output/obfuscated" />
   
   <Var name="HideStrings" value="true" />
   <Var name="KeepPublicApi" value="false" />
   <Var name="HidePrivateApi" value="true" />
   <Var name="RegenerateDebugInfo " value="true" />
   <Var name="XmlMapping" value="true" />
-  <Var name="KeyFile" value=".\XamarinActivator\XamarinActivator.snk" />
+  <Var name="KeyFile" value="XamarinActivator/XamarinActivator.snk" />
   
-  <Module file="$(InPath)\XamarinActivator.exe">
+  <Module file="$(InPath)/XamarinActivator.exe">
     <SkipField type="XamarinActivatorRunner.MainClass.Actions" attrib="" rx=".*" />
     <SkipField type="XamarinActivator.XamarinProducts" attrib="" rx=".*" />
   </Module>

@@ -14,6 +14,7 @@ var configuration = Argument("configuration", "Release");
 // PREPARATION
 //////////////////////////////////////////////////////////////////////
 
+var PwdPath = MakeAbsolute(File(".")).GetDirectory();
 if (!DirectoryExists("./output")) {
     CreateDirectory("./output");
 }
@@ -42,7 +43,7 @@ Task("Build")
     var solution = "XamarinActivator/XamarinActivator.sln";
     
     NuGetRestore(solution);
-    DotNetBuild(solution);
+    DotNetBuild(solution, s => s.Configuration = configuration);
     
     CopyFiles("XamarinActivator/XamarinActivatorRunner/bin/" + configuration + "/*", "./output");
 });
@@ -63,7 +64,7 @@ Task("Merge")
         "output/XamarinActivator.dll " + 
         "output/Mono.Options.dll " + 
         "output/Newtonsoft.Json.dll ";
-    StartProcess(tool, args);
+    StartProcess(PwdPath.CombineWithFilePath(tool), args);
 });
 
 Task("Obfuscate")
@@ -76,7 +77,7 @@ Task("Obfuscate")
     
     var tool = "./tools/Obfuscar/tools/Obfuscar.Console.exe";
     var args = "XamarinActivator/obfuscar.xml ";
-    StartProcess(tool, args);
+    StartProcess(PwdPath.CombineWithFilePath(tool), args);
 });
 
 Task("Package")
