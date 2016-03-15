@@ -3,11 +3,13 @@
   <metadata>
     <id>XamarinActivator</id>
     <version>1.0.1</version>
-    <authors>.NET Development Addict</authors>
+    <authors>Matthew Leibowitz</authors>
     <owners>mattleibow</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/mattleibow/XamarinActivator/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/mattleibow/XamarinActivator</projectUrl>
     <description>A small tool to help CI system activate and deactivate Xamarin licenses.</description>
-    <copyright>Copyright (c) .NET Development Addict 2016</copyright>
+    <copyright>Copyright (c) Matthew Leibowitz 2016</copyright>
     <tags>Xamarin,Activation,License</tags>
   </metadata>
   <files>
