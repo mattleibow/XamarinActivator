@@ -19,7 +19,9 @@ namespace XamarinActivatorRunner
             var action = Actions.Activate;
 
             var options = new OptionSet() {
-                { "h|help",  "show this message and exit", h => showHelp = h != null },
+                { "h|?|help",  "show this message and exit", h => showHelp = h != null },
+                { " " },
+                { "License/User Credentials:" },
                 { "x|xamarin=", "the Xamarin platfom to activate/deactivate:\nios, andoid, mac", p => {
                     XamarinProducts prod;
                     if (Enum.TryParse(p, true, out prod))
@@ -27,10 +29,10 @@ namespace XamarinActivatorRunner
                     else
                         Console.WriteLine("Unable to parse Xamarin platform: '{0}'", p);
                 } },
-                { " License/User Credentials:" },
                 { "e|email=", "the email address to use to log in.", (string e) => email = e },
                 { "p|password=", "the password to use to log in.", (string p) => password= p },
-                { " Xamarin Credentials:" },
+                { " " },
+                { "Xamarin Credentials: (optional)" },
                 { "k|apikey=", "the Xamarin API key to use when communicating with the server.", (string k) => apiKey = k },
                 { "u|useragent=", "the User-Agent to use when communicating with the server.", (string u) => userAgent = u },
             };
@@ -58,14 +60,6 @@ namespace XamarinActivatorRunner
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 return ShowError("The email address and/or was not provided.");
-            }
-            if (string.IsNullOrEmpty(apiKey))
-            {
-                return ShowError("The API key was not provided.");
-            }
-            if (string.IsNullOrEmpty(userAgent))
-            {
-                return ShowError("The User-Agent was not provided.");
             }
             if (products.Count == 0)
             {

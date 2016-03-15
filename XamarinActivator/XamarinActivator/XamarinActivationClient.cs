@@ -21,6 +21,9 @@ namespace XamarinActivator
         private readonly static string ActivateUri = "https://activation.xamarin.com/api/studio.ashx";
         private readonly static string DeactivateUri = "https://activation.xamarin.com/api/deactivate.ashx";
 
+        private readonly static string DefaultApiKey = "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e";
+        private readonly static string DefaultUserAgent = "XamarinActivator";
+
         private readonly static string MTouchToolPath;
         private readonly static string MAndroidToolPath;
         private readonly static string MMacToolPath;
@@ -49,10 +52,15 @@ namespace XamarinActivator
             }
         }
 
+        public XamarinActivationClient()
+            : this(DefaultUserAgent, DefaultApiKey)
+        {
+        }
+
         public XamarinActivationClient(string userAgent, string apiKey)
         {
-            this.userAgent = userAgent;
-            this.apiKey = apiKey;
+			this.userAgent = string.IsNullOrWhiteSpace(userAgent) ? DefaultUserAgent : userAgent;
+			this.apiKey = string.IsNullOrWhiteSpace(apiKey) ? DefaultApiKey : apiKey;
         }
 
         public async Task RegisterProductsAsync(string email, string password, params XamarinProducts[] products)

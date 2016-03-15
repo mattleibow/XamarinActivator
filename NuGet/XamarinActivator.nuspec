@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>XamarinActivator</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>.NET Development Addict</authors>
     <owners>mattleibow</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
